@@ -22,7 +22,7 @@ now you can automate the complete process from end to end using PowerShell.
 
 ### Installing
 
-You can install the latest version of AzADX module from [PowerShell Gallery](https://www.powershellgallery.com/packages/)
+You can install the latest version of AzADX module from [PowerShell Gallery](https://www.powershellgallery.com/packages/AzADX)
 
 ```PowerShell
 Install-Module AzADX -Scope CurrentUser -Force

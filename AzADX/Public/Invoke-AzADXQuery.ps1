@@ -73,7 +73,7 @@ function Invoke-AzADXQuery {
             }
         }
 
-        $CommandUri = "$($uri)?csl=$($Command)&db=$($DatabaseName)"
+        $CommandUri = "$($uri)?csl=$($Query)&db=$($DatabaseName)"
 
         try {
             $Invoke = Invoke-RestMethod -Uri $CommandUri -Method Get -Headers $script:authHeader
