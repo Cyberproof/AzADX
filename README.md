@@ -4,7 +4,7 @@ PowerShell module for Azure Data Explorer management commands
 
 > :warning: **This module is still in beta**: Be very careful when you use it!
 
-## Propose of the module
+## Purpose of the module
 
 As of today, you can automate the creation and of the Kusto cluster using multiple tools.
 the challenge begins when you want to invoke management commands like table creation, mapping rules, or managing the access.
