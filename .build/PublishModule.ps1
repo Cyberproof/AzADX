@@ -1,8 +1,12 @@
+#Region Installing prerequisites
+Install-Module Az.Accounts,Az.Kusto -AllowClobber -Force
+
+
 Try {
         # Build a splat containing the required details and make sure to Stop for errors which will trigger the catch
         $params = @{
             Path        = ('.\AzADX' -f $PSScriptRoot )
-            NuGetApiKey = $env:psgkey
+            NuGetApiKey = "$env:psgkey"
             ErrorAction = 'Stop'
         }
         Publish-Module @params
