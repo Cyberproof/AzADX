@@ -19,12 +19,12 @@ function Invoke-AzADXMgmtCommand {
       $command = ".create table AzADX ( Id:int64, Type: string, Public:bool, CreatedAt: datetime)"
       $database = "AzADXDB"
       Invoke-AzADXDatabaseCommand -ClusterName "" -ResourceGroupName "" -DatabaseName $database -Command $command
-      
+
       In this example you set the management command you want to run and the Database you want to run the command on.
       .EXAMPLE
       $command = ".alter cluster policy caching hot  "{\"SoftDeletePeriod\": \"10.00:00:00\", \"Recoverability\": \"Enabled\"}""
       Invoke-AzADXDatabaseCommand -ClusterName "" -ResourceGroupName "" -Command $command
-      
+
       In this example you set the management command you want to run and the Database you want to run the command on.
     #>
 
@@ -82,7 +82,7 @@ function Invoke-AzADXMgmtCommand {
             $Invoke = Invoke-RestMethod -Uri $Uri -Body (ConvertTo-Json $CommandtoExecute) -Method Post -Headers $script:authHeader
         }
         catch {
-            Write-Verbose $_
+            Write-Verbose $Invoke
             Write-Error "Unable to invoke-command with error code: $($_.Exception.Message)" -ErrorAction Stop
         }
 

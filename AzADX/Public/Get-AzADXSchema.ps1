@@ -7,7 +7,7 @@ function Get-AzADXSchema {
       .SYNOPSIS
       Get Az ADX Schema
       .DESCRIPTION
-      With this function you can get Log Analytics Workspace table and generate ADX Schema and Mapping Rule 
+      With this function you can get Log Analytics Workspace table and generate ADX Schema and Mapping Rule
       .PARAMETER WorkspaceID
       Enter the Workspace ID that holds the table
       .PARAMETER TableName
@@ -20,13 +20,13 @@ function Get-AzADXSchema {
       $WorkspaceID = "XXXX-XXX-XXX-XXXX"
       $TableName = "TestTable"
       Get-AzADXSchema -WorkspaceID $WorkspaceID -TableNAme $TableNAme -GetTableSchema
-      
+
       In this example the function will get the Schema of the table you provide and output the schema ready for ADX.
       .EXAMPLE
       $WorkspaceID = "XXXX-XXX-XXX-XXXX"
       $TableName = "TestTable"
       Get-AzADXSchema -WorkspaceID $WorkspaceID -TableNAme $TableNAme -GetTableSchema
-      
+
       In this example the function will get the Schema of the table you provide and output the mapping rule ready for ADX.
     #>
 
@@ -46,7 +46,7 @@ function Get-AzADXSchema {
         [Parameter(Mandatory = $false)]
         [switch]$GetTableSchema
     )
-    #Region GetSchema 
+    #Region GetSchema
     $Query = @"
     $tablename | getschema
 "@
@@ -70,9 +70,9 @@ function Get-AzADXSchema {
         }
     }
     #EndRegion GetSchema
-    
+
     #Region Get Mapping Rule
-    $MappingRule = $GetSchema.Results | Select-Object @{name = "Column" ; expression = { $($_.ColumnName) } }, @{name = "Properties" ; expression = { "{" + '\"Path\"' + ":" + '\"' + "$." + "$($_.ColumnName)\" + '"}'}}    
+    $MappingRule = $GetSchema.Results | Select-Object @{name = "Column" ; expression = { $($_.ColumnName) } }, @{name = "Properties" ; expression = { "{" + '\"Path\"' + ":" + '\"' + "$." + "$($_.ColumnName)\" + '"}'}}
     Foreach ($field in $MappingRule) {
         if ($field.Column -eq $MappingRule.Column[0]) {
             $Mapping += "'[" + '{"column":' + '"' + "$($field.Column)" + '",' + '"Properties":' + $field.Properties + "},"

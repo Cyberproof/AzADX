@@ -19,7 +19,7 @@ function Invoke-AzADXQuery {
       $command = "Logs | take 10"
       $database = "AzADXDB"
       Invoke-AzADXDatabaseCommand -ClusterName "" -ResourceGroupName "" -DatabaseName $database -Command $command
-      
+
       In this example you set query command you want to run and the Database you want to run the query on.
     #>
 
@@ -84,11 +84,11 @@ function Invoke-AzADXQuery {
         }
         $result = @()
         if ($Invoke) {
-            $table = $Invoke.Tables | where { $_.TableName -eq "Table_0" }
+            $table = $Invoke.Tables | Where-Object { $_.TableName -eq "Table_0" }
             $Rows = $table.Rows[0].Count
             $events = $table.Rows.Count
-            
-            for ($i = 0; $i -lt $events; $i++) {   
+
+            for ($i = 0; $i -lt $events; $i++) {
                 $parsedrow = [PSCustomObject]@{}
                 for ($j = 0; $j -lt $Rows; $j++) {
                     $parsedrow | Add-Member -NotePropertyName "$($table.columns[$j].ColumnName)" -NotePropertyValue "$($table.Rows[$i][$j])"
