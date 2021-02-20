@@ -12,7 +12,7 @@
     RootModule           = 'AzADX.psm1'
 
     # Version number of this module.
-    ModuleVersion        = '0.0.4'
+    ModuleVersion        = '0.0.5'
 
     # Supported PSEditions
     CompatiblePSEditions = 'Core', 'Desktop'
@@ -80,7 +80,8 @@
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
     FunctionsToExport    = @(
         'Invoke-AzADXMgmtCommand',
-        'Invoke-AzADXQuery'
+        'Invoke-AzADXQuery',
+        'Get-AzADXSchema'
     )
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
@@ -113,16 +114,16 @@
             )
 
             # A URL to the license for this module.
-            LicenseUri = 'https://github.com/SaggehaimBlog/AzADX/blob/main/LICENSE'
+            LicenseUri = 'https://github.com/CyberProof/AzADX/blob/main/LICENSE'
 
             # A URL to the main website for this project.
-            ProjectUri = 'https://github.com/SaggehaimBlog/AzADX'
+            ProjectUri = 'https://github.com/CyberProof/AzADX'
 
             # A URL to an icon representing this module.
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = ' fixed bug in Invoke-AzADXQuery with wrong parameter '
+            ReleaseNotes = ' Added Get-AzADXSchema to easy export Log analytics tables to ADX '
 
         } # End of PSData hashtable
 
