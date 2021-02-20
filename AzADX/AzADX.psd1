@@ -12,7 +12,7 @@
     RootModule           = 'AzADX.psm1'
 
     # Version number of this module.
-    ModuleVersion        = '0.0.5'
+    ModuleVersion        = '0.0.6'
 
     # Supported PSEditions
     CompatiblePSEditions = 'Core', 'Desktop'
@@ -123,7 +123,7 @@
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = ' Added Get-AzADXSchema to easy export Log analytics tables to ADX '
+            ReleaseNotes = ' Align with Script Analyzer '
 
         } # End of PSData hashtable
 

@@ -24,6 +24,7 @@ function Invoke-AzADXQuery {
     #>
 
     [cmdletbinding()]
+    [OutputType([System.Object[]])]
     param (
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
@@ -60,18 +61,6 @@ function Invoke-AzADXQuery {
         }
         $Uri = "$($script:baseUri)/v1/rest/query"
         Write-Verbose -Message "Using URI: $($uri)"
-
-        if ($DatabaseName) {
-            $CommandtoExecute = @{
-                csl = $Query
-                db  = $DatabaseName
-            }
-        }
-        else {
-            $CommandtoExecute = @{
-                csl = $Query
-            }
-        }
 
         $CommandUri = "$($uri)?csl=$($Query)&db=$($DatabaseName)"
 
