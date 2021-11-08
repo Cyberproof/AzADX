@@ -77,18 +77,16 @@ function Invoke-AzADXQuery {
                 $table = $Invoke.Tables | Where-Object { $_.TableName -eq "Table_0" }
                 $Rows = $table.Rows[0].Count
                 $events = $table.Rows.Count
-        
                 $result = for ($i = 0; $i -lt $events; $i++) {
                     $parsedrow = [ordered]@{}
                     for ($j = 0; $j -lt $Rows; $j++) {
                         $parsedrow.Add(($table.columns[$j].ColumnName) , ($table.Rows[$i][$j]))
                     }
-                
                     [PSCustomObject]$parsedrow
                     [void]$result.Add($parsedrow)
                 }
             }
-            Write-Host "[$(Get-Date -Format 'dd/MM/yy hh:mm')] - Got $($result.count) events"
+            Write-Output "[$(Get-Date -Format 'dd/MM/yy hh:mm')] - Got $($result.count) events"
         }
         catch {
             Write-Verbose $_
