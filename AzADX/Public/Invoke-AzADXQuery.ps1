@@ -71,20 +71,28 @@ function Invoke-AzADXQuery {
             Write-Verbose $_
             Write-Error "Unable to invoke-command with error code: $($_.Exception.Message)" -ErrorAction Stop
         }
-        $result = @()
-        if ($Invoke) {
-            $table = $Invoke.Tables | Where-Object { $_.TableName -eq "Table_0" }
-            $Rows = $table.Rows[0].Count
-            $events = $table.Rows.Count
-
-            for ($i = 0; $i -lt $events; $i++) {
-                $parsedrow = [PSCustomObject]@{}
-                for ($j = 0; $j -lt $Rows; $j++) {
-                    $parsedrow | Add-Member -NotePropertyName "$($table.columns[$j].ColumnName)" -NotePropertyValue "$($table.Rows[$i][$j])"
+        try {
+            $result = [System.Collections.ArrayList]::new()
+            if ($Invoke) {
+                $table = $Invoke.Tables | Where-Object { $_.TableName -eq "Table_0" }
+                $Rows = $table.Rows[0].Count
+                $events = $table.Rows.Count
+        
+                $result = for ($i = 0; $i -lt $events; $i++) {
+                    $parsedrow = [ordered]@{}
+                    for ($j = 0; $j -lt $Rows; $j++) {
+                        $parsedrow.Add(($table.columns[$j].ColumnName) , ($table.Rows[$i][$j]))
+                    }
+                
+                    [PSCustomObject]$parsedrow
+                    [void]$result.Add($parsedrow)
                 }
-                $result += $parsedrow
-
             }
+            Write-Host "[$(Get-Date -Format 'dd/MM/yy hh:mm')] - Got $($result.count) events"
+        }
+        catch {
+            Write-Verbose $_
+            Write-Error "Unable to parse events. Exited with error code: $($_.Exception.Message)" -ErrorAction Stop
         }
         return $result
 

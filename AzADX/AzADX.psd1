@@ -12,7 +12,7 @@
     RootModule           = 'AzADX.psm1'
 
     # Version number of this module.
-    ModuleVersion        = '0.0.6'
+    ModuleVersion        = '0.0.7'
 
     # Supported PSEditions
     CompatiblePSEditions = 'Core', 'Desktop'
@@ -123,7 +123,7 @@
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = ' Align with Script Analyzer '
+            ReleaseNotes = ' Upadte the parsing to introduce higher performance '
 
         } # End of PSData hashtable
 

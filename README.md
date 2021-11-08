@@ -52,14 +52,14 @@ In this example you set the management command you want to run and the Database 
 ```PowerShell
 $command = ".create table AzADX ( Id:int64, Type: string, Public:bool, CreatedAt: datetime)"
 $database = "AzADXDB"
-Invoke-AzADXDatabaseCommand -ClusterName "" -ResourceGroupName "" -DatabaseName $database -Command $command
+Invoke-AzADXMgmtCommand -ClusterName "" -ResourceGroupName "" -DatabaseName $database -Command $command
 ```
 
 In this example you set the management command you want to run and the Database you want to run the command on.
 
 ```PowerShell
 $command = ".alter cluster policy caching hot  "{\"SoftDeletePeriod\": \"10.00:00:00\", \"Recoverability\"\"Enabled\"}""
-Invoke-AzADXDatabaseCommand -ClusterName "" -ResourceGroupName "" -Command $command
+Invoke-AzADXMgmtCommand -ClusterName "" -ResourceGroupName "" -Command $command
 ```
 
 ### Invoke-AzADXQuery
