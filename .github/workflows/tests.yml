@@ -1,5 +1,11 @@
 name: Test Module
-on: pull_request
+on: 
+  push:
+    branches:
+       - 'Version/**'
+  pull_request:
+    branches:
+       - main
 
 jobs:
   lint-with-PSScriptAnalyzer:

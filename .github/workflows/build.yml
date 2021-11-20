@@ -1,5 +1,8 @@
 name: Build and Deply Module
-on: push
+on: 
+  push:
+    branches:
+       - 'main'
 
 jobs:
   lint-with-PSScriptAnalyzer:
