@@ -123,7 +123,7 @@
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = ' Upadte the parsing to introduce higher performance '
+            ReleaseNotes = ' Update the parsing to introduce higher performance '
 
         } # End of PSData hashtable
 

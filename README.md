@@ -1,5 +1,7 @@
 # AzADX
 
+[![Test and Deploy Module](https://github.com/Cyberproof/AzADX/actions/workflows/pipeline.yml/badge.svg?branch=main)](https://github.com/Cyberproof/AzADX/actions/workflows/pipeline.yml)
+
 PowerShell module for Azure Data Explorer management commands
 
 > :warning: **This module is still in beta**: Be very careful when you use it!
