@@ -23,6 +23,10 @@ jobs:
             } else {
                 Write-Output "There were $($errors.Count) errors and $($warnings.Count) warnings total."
             }
+  build-and-deploy-module:
+    name: Build and Deply module
+    runs-on: ubuntu-latest
+    steps:
     - name: Push to PsGallary
       shell: pwsh
       env:
