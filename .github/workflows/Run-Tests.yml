@@ -23,3 +23,18 @@ jobs:
             } else {
                 Write-Output "There were $($errors.Count) errors and $($warnings.Count) warnings total."
             }
+    - name: Push to PsGallary
+      shell: pwsh
+      run: |
+           Install-Module Az.Accounts,Az.Kusto -AllowClobber -Force
+           Try { 
+           $params = @{
+            Path        = ('.\AzADX' -f $PSScriptRoot )
+            NuGetApiKey = "$env:psgkey"
+            ErrorAction = 'Stop'
+            }
+           Publish-Module @params
+           Write-Output -InputObject ('AzADX PowerShell Module version published to the PowerShell Gallery!')
+           } Catch {
+                    throw $_
+                    }
