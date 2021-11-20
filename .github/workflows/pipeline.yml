@@ -1,4 +1,4 @@
-name: Test PowerShell on Ubuntu
+name: Test and Deploy Module
 on: push
 
 jobs:
