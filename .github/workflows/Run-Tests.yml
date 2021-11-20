@@ -25,6 +25,8 @@ jobs:
             }
     - name: Push to PsGallary
       shell: pwsh
+      env:
+         psgkey: ${{ secrets.PSGKEY }}
       run: |
            Install-Module Az.Accounts,Az.Kusto -AllowClobber -Force
            Try { 
