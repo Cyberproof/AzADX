@@ -30,6 +30,7 @@ jobs:
     name: Build and Deply module
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - name: Push to PsGallary
       shell: pwsh
       env:
