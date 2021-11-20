@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Push to PsGallary
+    - name: Push to psgallery
       shell: pwsh
       env:
          psgkey: ${{ secrets.PSGKEY }}
