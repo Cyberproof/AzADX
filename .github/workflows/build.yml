@@ -30,7 +30,8 @@ jobs:
     name: Build and Deply module
     runs-on: ubuntu-latest
     steps:
-    - name: Push to PsGallary
+    - uses: actions/checkout@v2
+    - name: Push to psgallery
       shell: pwsh
       env:
          psgkey: ${{ secrets.PSGKEY }}
